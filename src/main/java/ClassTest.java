@@ -15,5 +15,11 @@ public class ClassTest {
 
         UserService userService = new UserService();
         System.out.println(Arrays.toString(userService.userLoadAll()));
+   /*     User[] users = {user,user1,user2,user3,user4};
+        userRepository.saveAll(users);*/
+/*        User newuser = new User("ali","hello");
+        System.out.println(userRepository.save(newuser));*/
+
     }
+
 }
