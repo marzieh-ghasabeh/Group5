@@ -1,3 +1,7 @@
+package repository;
+
+import entity.User;
+
 import java.sql.*;
 
 public class UserRepository {
@@ -16,7 +20,16 @@ public class UserRepository {
 
     }
     public void delete(int id){
-
+        String query = "DELETE FROM user_account WHERE user_id = ?";
+        Connection connection = JDBCConnection.connetToDB();
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1,id);
+            statement.executeUpdate();
+        }catch (SQLException e){
+            System.out.println("not connected");
+            e.printStackTrace();
+        }
     }
 
     public User load(int id) {
@@ -34,7 +47,7 @@ public class UserRepository {
             String name = resultSet.getString("username");
             String pass = resultSet.getString("pass_word");
             user = new User(name, pass);
-            user.setUesrId(userId);
+            user.setId(userId);
         } catch (SQLException e) {
             System.out.println("not connected");
             e.printStackTrace();
@@ -50,7 +63,7 @@ public class UserRepository {
             statement.setString(1,user.userame);
             statement.setString(2,user.password);
             statement.setInt(3,user.uesrId);
-            statement.execute();
+            statement.executeUpdate();
         }catch (SQLException e){
             System.out.println("not connected");
             e.printStackTrace();

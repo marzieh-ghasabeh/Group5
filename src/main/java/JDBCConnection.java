@@ -6,7 +6,7 @@ public class JDBCConnection {
     public static Connection connetToDB(){
         String dburl = "jdbc:postgresql://localhost:5432/group5";
         String user = "postgres";
-        String pass = "marzieh@1371";
+        String pass = "123456";
         Connection connect1=null;
         try {
              connect1 = DriverManager.getConnection(dburl,user,pass);
